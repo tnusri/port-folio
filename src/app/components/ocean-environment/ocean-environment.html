@@ -1,0 +1,166 @@
+<div class="ocean-environment">
+
+  <!-- ============================================================
+       SKY
+  ============================================================ -->
+
+  <div class="ocean-environment__sky">
+    <div class="ocean-environment__light"></div>
+  </div>
+
+
+  <!-- ============================================================
+       SUN
+  ============================================================ -->
+
+  <div
+    class="sun"
+    [style.opacity]="getSunOpacity()"
+    [style.--sun-warmth]="getSunWarmth()">
+  </div>
+
+
+  <!-- ============================================================
+       SOFT CLOUDS
+  ============================================================ -->
+
+  <div
+    class="clouds clouds--soft"
+    [style.opacity]="getSoftCloudOpacity()">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </div>
+
+
+  <!-- ============================================================
+       STORM CLOUDS
+  ============================================================ -->
+
+  <div
+    class="clouds clouds--storm"
+    [style.opacity]="getStormCloudOpacity()">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </div>
+
+
+  <!-- ============================================================
+       ATMOSPHERIC HAZE
+  ============================================================ -->
+
+  <div
+    class="environment-haze"
+    [style.opacity]="getHazeOpacity()">
+  </div>
+
+
+  <!-- ============================================================
+       HORIZON GLOW
+  ============================================================ -->
+
+  <div
+    class="horizon-glow"
+    [style.opacity]="getHorizonGlowOpacity()">
+  </div>
+
+
+  <!-- ============================================================
+       DISTANT HORIZON
+  ============================================================ -->
+
+  <div class="ocean-environment__horizon"></div>
+
+
+  <!-- ============================================================
+       OCEAN
+  ============================================================ -->
+
+  <div class="ocean-environment__water"></div>
+
+
+  <!-- ============================================================
+       SHORE
+  ============================================================ -->
+
+  <div class="ocean-environment__shore"></div>
+
+
+  <!-- ============================================================
+       WAVES
+  ============================================================ -->
+
+  <div class="ocean-environment__waves">
+
+
+    <!-- Wave 1 -->
+
+    <div
+      class="wave wave--1"
+      [style.transform]="getWaveTransform(0.08, 0.28)"
+      [style.opacity]="getWaveOpacity(0.08, 0.28)"
+    >
+
+      <div
+        class="wave__shore-foam"
+        [style.opacity]="getShoreFoamOpacity(0.20, 0.28)">
+      </div>
+
+    </div>
+
+
+    <!-- Wave 2 -->
+
+    <div
+      class="wave wave--2"
+      [style.transform]="getWaveTransform(0.24, 0.46)"
+      [style.opacity]="getWaveOpacity(0.24, 0.46)"
+    >
+
+      <div
+        class="wave__shore-foam"
+        [style.opacity]="getShoreFoamOpacity(0.38, 0.46)">
+      </div>
+
+    </div>
+
+
+    <!-- Wave 3 -->
+
+    <div
+      class="wave wave--3"
+      [style.transform]="getWaveTransform(0.44, 0.66)"
+      [style.opacity]="getWaveOpacity(0.44, 0.66)"
+    >
+
+      <div
+        class="wave__shore-foam"
+        [style.opacity]="getShoreFoamOpacity(0.58, 0.66)">
+      </div>
+
+    </div>
+
+
+    <!-- Wave 4 -->
+
+    <div
+      class="wave wave--4"
+      [style.transform]="getWaveTransform(0.62, 0.84)"
+      [style.opacity]="getWaveOpacity(0.62, 0.84)"
+    >
+
+      <div
+        class="wave__shore-foam"
+        [style.opacity]="getShoreFoamOpacity(0.76, 0.84)">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

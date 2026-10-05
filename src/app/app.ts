@@ -1,11 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { OceanEnvironment } from './components/ocean-environment/ocean-environment';
+import { Journey } from './components/journey/journey';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [
+    OceanEnvironment,
+    Journey
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('sahil-portfolio');
+  journeyProgress = 0;
+
+  onJourneyProgress(progress: number): void {
+    this.journeyProgress = progress;
+  }
 }

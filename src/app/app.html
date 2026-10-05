@@ -1,26 +1,11 @@
 <main class="site">
-  <section class="hero">
-    <div class="hero__content">
-      <p class="hero__eyebrow">01 / 05</p>
 
-      <h1 class="hero__title">SAHIL</h1>
+  <app-ocean-environment
+    [progress]="journeyProgress">
+  </app-ocean-environment>
 
-      <p class="hero__pronunciation">
-        /saa-hil/
-      </p>
+  <app-journey
+    (progressChange)="onJourneyProgress($event)">
+  </app-journey>
 
-      <p class="hero__meaning">
-        the shore · where land meets the sea
-      </p>
-
-      <button class="hero__cta" type="button">
-        <span>BEGIN THE JOURNEY</span>
-        <span aria-hidden="true">→</span>
-      </button>
-    </div>
-
-    <p class="hero__scroll">
-      ↓ scroll to sail
-    </p>
-  </section>
 </main>

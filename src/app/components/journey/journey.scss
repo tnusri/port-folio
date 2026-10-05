@@ -1,0 +1,123 @@
+:host {
+  position: relative;
+  display: block;
+  z-index: 2;
+}
+
+
+// ============================================================
+// JOURNEY
+// ============================================================
+
+.journey {
+  position: relative;
+  width: 100%;
+}
+
+
+// ============================================================
+// STORY
+// ============================================================
+
+.story {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px;
+
+  color: var(--color-foam);
+}
+
+
+// ============================================================
+// STORY CONTENT
+// ============================================================
+
+.story__content {
+  width: min(600px, 100%);
+}
+
+
+// ============================================================
+// STORY NUMBER
+// ============================================================
+
+.story__number {
+  margin: 0 0 24px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  opacity: 0.55;
+}
+
+
+// ============================================================
+// STORY TITLE
+// ============================================================
+
+.story__title {
+  margin: 0;
+
+  font-size: clamp(
+    56px,
+    9vw,
+    130px
+  );
+
+  line-height: 0.9;
+
+  font-weight: 300;
+
+  letter-spacing: -0.05em;
+
+  text-transform: uppercase;
+}
+
+
+// ============================================================
+// STORY DESCRIPTION
+// ============================================================
+
+.story__description {
+  max-width: 480px;
+
+  margin: 28px 0 0;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  opacity: 0.7;
+}
+
+
+// ============================================================
+// MOBILE
+// ============================================================
+
+@media (max-width: 768px) {
+
+  .story {
+    padding: 40px 24px;
+  }
+
+  .story__title {
+    font-size: clamp(
+      52px,
+      17vw,
+      100px
+    );
+  }
+
+  .story__description {
+    font-size: 15px;
+  }
+}
