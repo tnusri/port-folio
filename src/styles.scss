@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-deep-ocean: #06141f;
+  --color-ocean: #0b2738;
+  --color-blue: #12445a;
+
+  --color-foam: #ddeff2;
+  --color-sand: #d6c29a;
+  --color-sunlight: #f2d79b;
+
+  --font-sans:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  background: var(--color-deep-ocean);
+
+  color: var(--color-foam);
+
+  font-family: var(--font-sans);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: var(--color-deep-ocean);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
