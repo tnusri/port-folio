@@ -25,18 +25,58 @@ export class OceanEnvironment {
 
 
   // ============================================================
+  // JOURNEY ATMOSPHERE
+  // ============================================================
+
+  /**
+   * Very subtle atmospheric tint that changes with
+   * the emotional progression of the journey.
+   *
+   * This is intentionally restrained.
+   *
+   * Shore    = warm / open
+   * First    = slightly cooler
+   * Current  = deeper
+   * Storm    = darkest
+   * Horizon  = warm again
+   */
+  getJourneyAtmosphere(): string {
+    const warmth =
+      this.getTimelineValue([
+        [0.00, 1.00],
+        [0.25, 0.70],
+        [0.50, 0.35],
+        [0.75, 0.08],
+        [0.85, 0.02],
+        [1.00, 0.85]
+      ]);
+
+    const darkness =
+      this.getTimelineValue([
+        [0.00, 0.00],
+        [0.25, 0.05],
+        [0.50, 0.12],
+        [0.75, 0.28],
+        [0.85, 0.38],
+        [0.92, 0.18],
+        [1.00, 0.00]
+      ]);
+
+    return `rgba(
+      ${Math.round(210 + warmth * 30)},
+      ${Math.round(180 + warmth * 35)},
+      ${Math.round(150 + warmth * 35)},
+      ${0.018 + darkness * 0.035}
+    )`;
+  }
+
+
+  // ============================================================
   // SUN
   // ============================================================
 
   /**
-   * Controls the visibility of the sun.
-   *
-   * The sun is strongest at both emotional endpoints:
-   *
-   * Shore   → full glow
-   * Current → soft
-   * Storm   → almost gone
-   * Horizon → full glow again
+   * The sun is strongest at both emotional endpoints.
    */
   getSunOpacity(): number {
     return this.getTimelineValue([
@@ -53,9 +93,7 @@ export class OceanEnvironment {
 
 
   /**
-   * Controls how warm the sunlight becomes.
-   *
-   * The light is warmest at the Shore and Horizon.
+   * Controls sunlight warmth.
    */
   getSunWarmth(): number {
     return this.getTimelineValue([
@@ -74,7 +112,7 @@ export class OceanEnvironment {
   // ============================================================
 
   /**
-   * Soft atmospheric clouds.
+   * Soft clouds remain present throughout the journey.
    */
   getSoftCloudOpacity(): number {
     return this.getTimelineValue([
@@ -88,32 +126,56 @@ export class OceanEnvironment {
 
 
   /**
-   * Dark storm clouds.
+   * Storm clouds gather gradually before the Storm.
    */
   getStormCloudOpacity(): number {
     return this.getTimelineValue([
-      [0.00, 0],
-      [0.50, 0],
-      [0.65, 0.10],
-      [0.75, 0.55],
+      [0.00, 0.00],
+      [0.45, 0.00],
+      [0.60, 0.05],
+      [0.70, 0.25],
+      [0.78, 0.65],
       [0.85, 0.90],
-      [0.95, 0.65],
-      [1.00, 0.10]
+      [0.92, 0.70],
+      [1.00, 0.08]
+    ]);
+  }
+
+
+  // ============================================================
+  // STORM ATMOSPHERE
+  // ============================================================
+
+  /**
+   * Overall storm intensity.
+   *
+   * The storm builds gradually instead of appearing suddenly.
+   */
+  getStormIntensity(): number {
+    return this.getTimelineValue([
+      [0.00, 0.00],
+      [0.45, 0.00],
+      [0.60, 0.05],
+      [0.70, 0.30],
+      [0.78, 0.70],
+      [0.85, 1.00],
+      [0.92, 0.65],
+      [1.00, 0.00]
     ]);
   }
 
 
   /**
-   * Controls the darkness of the storm atmosphere.
+   * Controls a subtle dark atmospheric layer.
    */
-  getStormIntensity(): number {
+  getStormOverlayOpacity(): number {
     return this.getTimelineValue([
       [0.00, 0.00],
       [0.50, 0.00],
-      [0.65, 0.10],
-      [0.75, 0.55],
-      [0.85, 1.00],
-      [0.95, 0.60],
+      [0.65, 0.05],
+      [0.75, 0.18],
+      [0.85, 0.40],
+      [0.92, 0.22],
       [1.00, 0.00]
     ]);
   }
@@ -124,7 +186,7 @@ export class OceanEnvironment {
   // ============================================================
 
   /**
-   * Controls atmospheric haze.
+   * Atmospheric haze.
    */
   getHazeOpacity(): number {
     return this.getTimelineValue([
@@ -138,9 +200,7 @@ export class OceanEnvironment {
 
 
   /**
-   * Controls the warm glow around the horizon.
-   *
-   * The glow becomes strongest toward the final Horizon section.
+   * Warm horizon glow.
    */
   getHorizonGlowOpacity(): number {
     return this.getTimelineValue([
@@ -160,28 +220,48 @@ export class OceanEnvironment {
   /**
    * Moves an individual wave from the horizon toward the shore.
    */
-  getWaveTransform(start: number, end: number): string {
-    const localProgress = this.getLocalProgress(start, end);
+  getWaveTransform(
+    start: number,
+    end: number
+  ): string {
 
-    const translateY = (1 - localProgress) * -100;
+    const localProgress =
+      this.getLocalProgress(start, end);
+
+    const translateY =
+      (1 - localProgress) * -100;
 
     return `translateY(${translateY}%)`;
   }
 
 
   /**
-   * Controls when a wave becomes visible.
+   * Controls wave visibility.
    */
-  getWaveOpacity(start: number, end: number): number {
-    return this.getLocalProgress(start, end);
+  getWaveOpacity(
+    start: number,
+    end: number
+  ): number {
+
+    return this.getLocalProgress(
+      start,
+      end
+    );
   }
 
 
   /**
-   * Controls foam appearing where a wave reaches the shore.
+   * Controls foam appearing at the shore.
    */
-  getShoreFoamOpacity(start: number, end: number): number {
-    return this.getLocalProgress(start, end);
+  getShoreFoamOpacity(
+    start: number,
+    end: number
+  ): number {
+
+    return this.getLocalProgress(
+      start,
+      end
+    );
   }
 
 
@@ -200,11 +280,19 @@ export class OceanEnvironment {
       return points[0][1];
     }
 
-    for (let i = 1; i < points.length; i++) {
+    for (
+      let i = 1;
+      i < points.length;
+      i++
+    ) {
 
-      const [endProgress, endValue] = points[i];
+      const [endProgress, endValue] =
+        points[i];
 
-      const [startProgress, startValue] = points[i - 1];
+      const [
+        startProgress,
+        startValue
+      ] = points[i - 1];
 
       if (this.progress <= endProgress) {
 
@@ -214,17 +302,21 @@ export class OceanEnvironment {
 
         return (
           startValue +
-          (endValue - startValue) * localProgress
+          (endValue - startValue) *
+          localProgress
         );
       }
     }
 
-    return points[points.length - 1][1];
+    return points[
+      points.length - 1
+    ][1];
   }
 
 
   /**
-   * Converts global journey progress into local animation progress.
+   * Converts global progress into
+   * local animation progress.
    */
   private getLocalProgress(
     start: number,

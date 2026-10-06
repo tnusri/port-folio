@@ -1,11 +1,24 @@
-<div class="ocean-environment">
+<div
+  class="ocean-environment"
+  [style.--journey-atmosphere]="getJourneyAtmosphere()">
+
+  <!-- ============================================================
+       JOURNEY ATMOSPHERE
+  ============================================================ -->
+
+  <div
+    class="journey-atmosphere">
+  </div>
+
 
   <!-- ============================================================
        SKY
   ============================================================ -->
 
   <div class="ocean-environment__sky">
+
     <div class="ocean-environment__light"></div>
+
   </div>
 
 
@@ -61,6 +74,16 @@
 
 
   <!-- ============================================================
+       STORM ATMOSPHERIC OVERLAY
+  ============================================================ -->
+
+  <div
+    class="storm-overlay"
+    [style.opacity]="getStormOverlayOpacity()">
+  </div>
+
+
+  <!-- ============================================================
        HORIZON GLOW
   ============================================================ -->
 
@@ -97,14 +120,12 @@
 
   <div class="ocean-environment__waves">
 
-
     <!-- Wave 1 -->
 
     <div
       class="wave wave--1"
       [style.transform]="getWaveTransform(0.08, 0.28)"
-      [style.opacity]="getWaveOpacity(0.08, 0.28)"
-    >
+      [style.opacity]="getWaveOpacity(0.08, 0.28)">
 
       <div
         class="wave__shore-foam"
@@ -119,8 +140,7 @@
     <div
       class="wave wave--2"
       [style.transform]="getWaveTransform(0.24, 0.46)"
-      [style.opacity]="getWaveOpacity(0.24, 0.46)"
-    >
+      [style.opacity]="getWaveOpacity(0.24, 0.46)">
 
       <div
         class="wave__shore-foam"
@@ -135,8 +155,7 @@
     <div
       class="wave wave--3"
       [style.transform]="getWaveTransform(0.44, 0.66)"
-      [style.opacity]="getWaveOpacity(0.44, 0.66)"
-    >
+      [style.opacity]="getWaveOpacity(0.44, 0.66)">
 
       <div
         class="wave__shore-foam"
@@ -151,8 +170,7 @@
     <div
       class="wave wave--4"
       [style.transform]="getWaveTransform(0.62, 0.84)"
-      [style.opacity]="getWaveOpacity(0.62, 0.84)"
-    >
+      [style.opacity]="getWaveOpacity(0.62, 0.84)">
 
       <div
         class="wave__shore-foam"

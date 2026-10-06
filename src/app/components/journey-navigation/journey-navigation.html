@@ -1,0 +1,34 @@
+<nav
+  class="journey-navigation"
+  aria-label="Journey navigation">
+
+  <div class="journey-navigation__track">
+    <div
+      class="journey-navigation__progress"
+      [style.width.%]="progress * 100">
+    </div>
+  </div>
+
+  <button
+    *ngFor="let section of sections; let i = index"
+    class="journey-navigation__item"
+    [class.journey-navigation__item--active]="
+      getActiveSection() === i
+    "
+    [attr.aria-label]="'Go to ' + section.label"
+    [attr.aria-current]="
+      getActiveSection() === i ? 'step' : null
+    "
+    (click)="goToSection(i)">
+
+    <span class="journey-navigation__number">
+      {{ section.number }}
+    </span>
+
+    <span class="journey-navigation__label">
+      {{ section.label }}
+    </span>
+
+  </button>
+
+</nav>

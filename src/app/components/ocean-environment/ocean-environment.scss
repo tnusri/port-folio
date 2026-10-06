@@ -1,5 +1,6 @@
 :host {
   position: fixed;
+
   inset: 0;
 
   display: block;
@@ -29,6 +30,7 @@
 
 .ocean-environment__sky {
   position: absolute;
+
   inset: 0;
 
   background: linear-gradient(
@@ -39,8 +41,10 @@
   );
 }
 
-/* sun 
-*/
+/* --------------------------------
+   SUN
+-------------------------------- */
+
 .sun {
   position: absolute;
 
@@ -52,7 +56,25 @@
 
   border-radius: 50%;
 
-  background: #f2d79b;
+  --sun-warmth: 0.5;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        255,
+        235,
+        180,
+        calc(0.45 + var(--sun-warmth) * 0.35)
+      ) 0%,
+      rgba(
+        242,
+        215,
+        155,
+        calc(0.20 + var(--sun-warmth) * 0.25)
+      ) 45%,
+      transparent 75%
+    );
 
   box-shadow:
     0 0 30px rgba(242, 215, 155, 0.35),
@@ -66,7 +88,11 @@
     opacity 0.4s ease,
     transform 0.4s ease;
 }
-/*clouds*/
+
+/* --------------------------------
+   CLOUDS
+-------------------------------- */
+
 .clouds {
   position: absolute;
 
@@ -99,6 +125,7 @@
 .clouds--soft span {
   background: rgba(210, 225, 228, 0.14);
 }
+
 .clouds--soft span:nth-child(1) {
   top: 16%;
   left: 8%;
@@ -107,14 +134,17 @@
 .clouds--soft span:nth-child(2) {
   top: 28%;
   left: 48%;
+
   width: 340px;
 }
 
 .clouds--soft span:nth-child(3) {
   top: 12%;
   left: 72%;
+
   width: 220px;
 }
+
 @keyframes cloud-drift {
   from {
     transform: translateX(-40px);
@@ -124,6 +154,7 @@
     transform: translateX(80px);
   }
 }
+
 .clouds--storm span {
   background: rgba(20, 31, 38, 0.35);
 
@@ -169,12 +200,13 @@
 
   transform: translateX(-50%);
 
-  background: radial-gradient(
-    ellipse,
-    rgba(225, 210, 170, 0.18) 0%,
-    rgba(225, 210, 170, 0.06) 35%,
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(225, 210, 170, 0.18) 0%,
+      rgba(225, 210, 170, 0.06) 35%,
+      transparent 70%
+    );
 
   filter: blur(20px);
 }
@@ -194,11 +226,12 @@
 
   transform: translateY(-50%);
 
-  background: linear-gradient(
-    to bottom,
-    rgba(220, 235, 238, 0.08),
-    rgba(220, 235, 238, 0)
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(220, 235, 238, 0.08),
+      rgba(220, 235, 238, 0)
+    );
 }
 
 /* --------------------------------
@@ -225,6 +258,7 @@
 
   z-index: 1;
 }
+
 /* --------------------------------
    SHORE
 -------------------------------- */
@@ -238,17 +272,16 @@
   width: 100%;
   height: 12%;
 
-  background: linear-gradient(
-    to bottom,
-    #c8b890 0%,
-    #b8a77f 45%,
-    #a8946d 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      #c8b890 0%,
+      #b8a77f 45%,
+      #a8946d 100%
+    );
 
   z-index: 3;
 }
-
-
 
 /* --------------------------------
    WAVE CONTAINER
@@ -271,6 +304,7 @@
 /* --------------------------------
    WAVE BASE
 -------------------------------- */
+
 .wave {
   position: absolute;
 
@@ -280,7 +314,7 @@
   width: 110%;
   height: 45%;
 
-background: rgba(7, 39, 52, 0.72);
+  background: rgba(7, 39, 52, 0.72);
 
   border-radius: 0;
 
@@ -303,6 +337,7 @@ background: rgba(7, 39, 52, 0.72);
 
   z-index: 4;
 }
+
 .wave::before {
   content: "";
 
@@ -351,7 +386,6 @@ background: rgba(7, 39, 52, 0.72);
     93% 43%,
     96% 36%,
     100% 45%,
-
     100% 100%,
     0% 100%
   );
@@ -432,21 +466,29 @@ background: rgba(7, 39, 52, 0.72);
 
   filter: blur(2px);
 }
+
 .wave--2 {
   height: 72%;
+
   z-index: 5;
 }
+
 .wave--3 {
   height: 78%;
+
   z-index: 6;
+
   background: rgba(5, 34, 47, 0.76);
 }
+
 .wave--4 {
   height: 86%;
+
   z-index: 7;
 
   background: rgba(4, 29, 41, 0.82);
 }
+
 .wave--4::before {
   opacity: 0.65;
 }
@@ -454,6 +496,7 @@ background: rgba(7, 39, 52, 0.72);
 .wave--4::after {
   opacity: 0.5;
 }
+
 /* ============================================================
    ATMOSPHERIC HAZE
 ============================================================ */
@@ -479,6 +522,26 @@ background: rgba(7, 39, 52, 0.72);
   z-index: 3;
 }
 
+/* ============================================================
+   STORM OVERLAY
+============================================================ */
+
+.storm-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 55%,
+      transparent 10%,
+      rgba(4, 14, 21, 0.35) 100%
+    );
+
+  pointer-events: none;
+
+  z-index: 8;
+}
 
 /* ============================================================
    HORIZON GLOW
@@ -510,31 +573,139 @@ background: rgba(7, 39, 52, 0.72);
   z-index: 3;
 }
 
-
 /* ============================================================
-   SUN WARMTH
+   JOURNEY ATMOSPHERE
 ============================================================ */
 
-.sun {
-  --sun-warmth: 0.5;
+.journey-atmosphere {
+  position: absolute;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        255,
-        235,
-        180,
-        calc(0.45 + var(--sun-warmth) * 0.35)
-      ) 0%,
+  inset: 0;
 
-      rgba(
-        242,
-        215,
-        155,
-        calc(0.20 + var(--sun-warmth) * 0.25)
-      ) 45%,
+  background: var(--journey-atmosphere);
 
-      transparent 75%
-    );
+  pointer-events: none;
+
+  z-index: 9;
+
+  mix-blend-mode: soft-light;
+
+  transition: background 700ms ease;
+}
+
+/* ============================================================
+   MOBILE ENVIRONMENT
+============================================================ */
+
+@media (max-width: 768px) {
+
+  .sun {
+    top: 15%;
+    right: 12%;
+
+    width: 72px;
+    height: 72px;
+  }
+
+  .ocean-environment__light {
+    width: 75%;
+    height: 30%;
+  }
+
+  .ocean-environment__horizon {
+    height: 64px;
+  }
+
+  .environment-haze {
+    filter: blur(16px);
+  }
+
+  .horizon-glow {
+    width: 90%;
+    height: 24%;
+  }
+
+  .clouds span {
+    animation-duration: 55s;
+  }
+
+  .clouds--soft span:nth-child(1) {
+    left: -8%;
+  }
+
+  .clouds--soft span:nth-child(2) {
+    left: 38%;
+
+    width: 280px;
+  }
+
+  .clouds--soft span:nth-child(3) {
+    left: 70%;
+
+    width: 180px;
+  }
+
+  .clouds--storm span:nth-child(1) {
+    left: -25%;
+
+    width: 340px;
+  }
+
+  .clouds--storm span:nth-child(2) {
+    left: 20%;
+
+    width: 400px;
+  }
+
+  .clouds--storm span:nth-child(3) {
+    left: 65%;
+
+    width: 340px;
+  }
+}
+
+/* ============================================================
+   SMALL PHONES
+============================================================ */
+
+@media (max-width: 420px) {
+
+  .sun {
+    top: 14%;
+    right: 9%;
+
+    width: 62px;
+    height: 62px;
+  }
+
+  .ocean-environment__light {
+    width: 90%;
+  }
+
+  .horizon-glow {
+    width: 110%;
+  }
+
+  .environment-haze {
+    filter: blur(14px);
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .clouds span {
+    animation: none;
+  }
+
+  .journey-atmosphere {
+    transition: none;
+  }
+
+  .sun {
+    transition: none;
+  }
 }

@@ -1,0 +1,292 @@
+:host {
+  position: fixed;
+
+  top: 32px;
+  right: 42px;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+/*
+ * Completely hide the navigation while
+ * a story overlay is open.
+ */
+:host-context(body.story-open) {
+  display: none;
+}
+
+.journey-navigation {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  pointer-events: auto;
+}
+
+.journey-navigation__track {
+  position: absolute;
+
+  top: 50%;
+  left: 3px;
+  right: 3px;
+
+  height: 1px;
+
+  transform: translateY(-50%);
+
+  background: rgba(221, 239, 242, 0.16);
+
+  pointer-events: none;
+}
+
+.journey-navigation__progress {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+
+  background: rgba(221, 239, 242, 0.55);
+
+  transition: width 180ms ease-out;
+}
+
+.journey-navigation__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--color-foam);
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  opacity: 0.34;
+
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.journey-navigation__number {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 7px;
+  height: 7px;
+
+  font-size: 0;
+
+  border: 1px solid rgba(221, 239, 242, 0.55);
+  border-radius: 50%;
+
+  background: var(--color-deep-ocean);
+
+  transition:
+    width 300ms ease,
+    height 300ms ease,
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.journey-navigation__label {
+  position: absolute;
+
+  top: 24px;
+  left: 50%;
+
+  white-space: nowrap;
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translate(-50%, -4px);
+
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.journey-navigation__item--active {
+  opacity: 1;
+
+  transform: translateY(-1px);
+}
+
+.journey-navigation__item--active
+.journey-navigation__number {
+  width: 10px;
+  height: 10px;
+
+  border-color: var(--color-foam);
+
+  background: var(--color-foam);
+
+  box-shadow:
+    0 0 0 4px rgba(221, 239, 242, 0.06);
+}
+
+.journey-navigation__item:hover {
+  opacity: 0.85;
+}
+
+.journey-navigation__item:hover
+.journey-navigation__number {
+  border-color: rgba(221, 239, 242, 0.9);
+}
+
+.journey-navigation__item:hover
+.journey-navigation__label {
+  opacity: 0.65;
+
+  transform: translate(-50%, 0);
+}
+
+.journey-navigation__item--active
+.journey-navigation__label {
+  opacity: 0.75;
+
+  transform: translate(-50%, 0);
+}
+
+.journey-navigation__item:focus-visible {
+  outline: 1px solid rgba(221, 239, 242, 0.7);
+
+  outline-offset: 6px;
+}
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 900px) {
+
+  :host {
+    top: 26px;
+    right: 28px;
+  }
+
+  .journey-navigation {
+    gap: 15px;
+  }
+
+  .journey-navigation__item {
+    width: 17px;
+    height: 17px;
+  }
+
+  .journey-navigation__label {
+    font-size: 8px;
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  :host {
+    top: 22px;
+    right: 20px;
+  }
+
+  .journey-navigation {
+    gap: 12px;
+  }
+
+  .journey-navigation__item {
+    width: 15px;
+    height: 15px;
+  }
+
+  .journey-navigation__number {
+    width: 6px;
+    height: 6px;
+  }
+
+  .journey-navigation__item--active
+  .journey-navigation__number {
+    width: 9px;
+    height: 9px;
+  }
+
+  .journey-navigation__label {
+    display: none;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+   ========================= */
+
+@media (max-width: 420px) {
+
+  :host {
+    top: 18px;
+    right: 16px;
+  }
+
+  .journey-navigation {
+    gap: 9px;
+  }
+
+  .journey-navigation__item {
+    width: 14px;
+    height: 14px;
+  }
+
+  .journey-navigation__number {
+    width: 5px;
+    height: 5px;
+  }
+
+  .journey-navigation__item--active
+  .journey-navigation__number {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .journey-navigation__item,
+  .journey-navigation__number,
+  .journey-navigation__label,
+  .journey-navigation__progress {
+    transition: none;
+  }
+}
