@@ -30,28 +30,44 @@
       </h1>
 
       <p class="story__description">
-        Every journey begins somewhere.
-        This is where mine begins — with curiosity,
-        a willingness to explore, and a desire to
-        create things that matter.
+        Every journey begins somewhere. Mine begins with a background in materials, a new chapter in management, a curiosity about people and history, and a simple idea of home.
       </p>
 
     </div>
 
-    <button
-      class="story__action"
-      type="button"
-      (click)="beginJourney()">
+    <div class="story__actions">
 
-      <span>
-        Begin the journey
-      </span>
+      <button
+        class="story__action"
+        type="button"
+        (click)="openStory(shoreStories[0])">
 
-      <span class="story__action-arrow">
-        →
-      </span>
+        <span>
+          Begin the journey
+        </span>
 
-    </button>
+        <span class="story__action-arrow">
+          →
+        </span>
+
+      </button>
+
+      <button
+        class="story__action story__action--secondary"
+        type="button"
+        (click)="goToNextSection('.story--first-wave')">
+
+        <span>
+          The First Wave
+        </span>
+
+        <span class="story__action-arrow">
+          ↓
+        </span>
+
+      </button>
+
+    </div>
 
     <div class="story__scroll">
 

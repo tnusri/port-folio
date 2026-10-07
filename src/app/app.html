@@ -1,29 +1,17 @@
 <main class="site">
 
-  <!-- ============================================================
-       OCEAN ENVIRONMENT
-  ============================================================ -->
-
   <app-ocean-environment
     [progress]="journeyProgress">
   </app-ocean-environment>
-
-
-  <!-- ============================================================
-       JOURNEY NAVIGATION
-  ============================================================ -->
 
   <app-journey-navigation
     [progress]="journeyProgress">
   </app-journey-navigation>
 
-
-  <!-- ============================================================
-       JOURNEY
-  ============================================================ -->
-
   <app-journey
     (progressChange)="onJourneyProgress($event)">
   </app-journey>
+
+  <app-journey-footer></app-journey-footer>
 
 </main>

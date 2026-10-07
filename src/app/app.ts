@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { OceanEnvironment } from './components/ocean-environment/ocean-environment';
 import { Journey } from './components/journey/journey';
 import { JourneyNavigation } from './components/journey-navigation/journey-navigation';
+import { JourneyFooter } from './components/journey-footer/journey-footer';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { JourneyNavigation } from './components/journey-navigation/journey-navig
   imports: [
     OceanEnvironment,
     Journey,
-    JourneyNavigation
+    JourneyNavigation,
+    JourneyFooter
   ],
 
   templateUrl: './app.html',
